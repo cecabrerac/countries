@@ -1,0 +1,34 @@
+@import "~@nebular/theme/styles/theming";
+@import "~@nebular/theme/styles/themes/dark";
+
+$nb-themes: nb-register-theme(
+  (
+    // add your variables here like:
+    // color-primary-100: #f2f6ff,
+    // color-primary-200: #d9e4ff,
+    // color-primary-300: #a6c1ff,
+    // color-primary-400: #598bff,
+    // color-primary-500: #3366ff,
+    // color-primary-600: #274bdb,
+    // color-primary-700: #1a34b8,
+    // color-primary-800: #102694,
+    // color-primary-900: #091c7a,
+    color-primary-100: #f8e7db,
+    color-primary-200: #f2cbb9,
+    color-primary-300: #d89e8c,
+    color-primary-400: #b17063,
+    color-primary-500: #7e3a34,
+    color-primary-600: #6c2626,
+    color-primary-700: #5a1a1f,
+    color-primary-800: #491019,
+    color-primary-900: #3c0916,
+
+    layout-background-color: color-primary-800,
+    header-background-color: color-primary-600,
+    footer-background-color: color-primary-600,
+    shadow: 0 0.5rem 1rem 0 #5a1a1f,
+    border-basic-color-3: #3c0916
+  ),
+  dark,
+  dark
+);
