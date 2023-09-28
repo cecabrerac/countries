@@ -2,9 +2,10 @@
   font-family: "Nunito", sans-serif;
 }
 
-nb-layout-header {
+nb-layout-header p{
   font-size: 1.5em;
   line-height: 1.3;
+  color: chartreuse;
 }
 
 /* ::ng-deep nb-layout-column{
