@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 import { environment } from '../../../environments/environment';
+import { ConstantPool } from '@angular/compiler';
 
 @Component({
   selector: 'app-main',
@@ -20,9 +21,12 @@ export class MainComponent implements OnInit {
   getAllCountries() {
     this.restService.get(this.apiUrl).subscribe((respuesta: any) => {
       this.dataCards = respuesta;
-      this.firstTen = this.dataCards.slice(0, 30);
-      console.log(this.dataCards);
-      console.log(this.firstTen);
+      const sortedData = this.dataCards.sort((a, b) => {
+        const aName = a.name.common;
+        const bName = b.name.common;
+        return aName < bName ? -1 : aName > bName ? 1 : 0;
+      });
+      this.firstTen = sortedData.slice(200);
     });
   }
 }
