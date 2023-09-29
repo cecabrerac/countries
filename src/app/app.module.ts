@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
     NbEvaIconsModule,
