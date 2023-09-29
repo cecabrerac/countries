@@ -1,6 +1,4 @@
 <app-pagination></app-pagination>
 <div class="cards-container">
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
+  <app-card [dataCard]="card" *ngFor="let card of firstTen"></app-card>
 </div>
