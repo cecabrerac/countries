@@ -10,12 +10,13 @@ import { ConstantPool } from '@angular/compiler';
 })
 export class MainComponent implements OnInit {
   apiUrl = environment.url;
-  public dataCards: any;
+  public dataCards: any = [];
   public firstTen: any;
   constructor(private restService: RestService) {}
 
   ngOnInit(): void {
-    this.getAllCountries();
+    console.log(this.dataCards.length);
+    if (this.dataCards.length == 0) this.getAllCountries();
   }
 
   getAllCountries() {
@@ -27,6 +28,7 @@ export class MainComponent implements OnInit {
         return aName < bName ? -1 : aName > bName ? 1 : 0;
       });
       this.firstTen = sortedData.slice(200);
+      console.log(this.dataCards);
     });
   }
 }
