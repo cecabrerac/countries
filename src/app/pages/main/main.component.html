@@ -1,4 +1,9 @@
-<app-pagination></app-pagination>
+<div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
 <div class="cards-container">
-  <app-card [dataCard]="card" *ngFor="let card of firstTen"></app-card>
+
+  <app-card [dataCard]="card"
+    *ngFor="let card of firstTen | paginate: { itemsPerPage: itemsPerPage, currentPage: p }"></app-card>
 </div>
