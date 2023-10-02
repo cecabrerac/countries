@@ -3,3 +3,16 @@
   flex-wrap: wrap;
   column-gap: 1em;
 }
+
+::ng-deep .ngx-pagination{
+
+  color:yellow;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
