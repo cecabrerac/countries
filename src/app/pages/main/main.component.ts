@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 import { environment } from '../../../environments/environment';
-import { ConstantPool } from '@angular/compiler';
 
 @Component({
   selector: 'app-main',
@@ -9,9 +8,12 @@ import { ConstantPool } from '@angular/compiler';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
+  p: number = 1;
+  itemsPerPage: number = 3;
   apiUrl = environment.url;
   public dataCards: any = [];
   public firstTen: any;
+
   constructor(private restService: RestService) {}
 
   ngOnInit(): void {
@@ -27,8 +29,7 @@ export class MainComponent implements OnInit {
         const bName = b.name.common;
         return aName < bName ? -1 : aName > bName ? 1 : 0;
       });
-      this.firstTen = sortedData.slice(200);
-      console.log(this.dataCards);
+      this.firstTen = sortedData.slice(0, 20);
     });
   }
 }
