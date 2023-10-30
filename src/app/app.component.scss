@@ -1,11 +1,17 @@
 header {
-    height: 20px;
+    height: 40px;
+    background-color: darkgrey;
+    display: flex;
+    align-items: center;
 }
 
 main {
-    height: calc(100vh - 60px);   
+    padding: 20px;   
 }
 
 footer {
     height: 40px;
+    line-height: 40px;
+    background-color: darkgrey;
+    text-align: center;
 }

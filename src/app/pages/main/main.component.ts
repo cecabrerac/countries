@@ -9,10 +9,10 @@ import { environment } from '../../../environments/environment';
 })
 export class MainComponent implements OnInit {
   p: number = 1;
-  itemsPerPage: number = 9;
+  itemsPerPage: number = 21;
   apiUrl = environment.url;
   public dataCards: any = [];
-  public firstTen: any;
+  public toShow: any;
 
   constructor(private restService: RestService) {}
 
@@ -29,7 +29,8 @@ export class MainComponent implements OnInit {
         const bName = b.name.common;
         return aName < bName ? -1 : aName > bName ? 1 : 0;
       });
-      this.firstTen = sortedData.slice(0, 20);
+      this.toShow = sortedData;
+      // this.toShow = sortedData.slice(0, 200);
     });
   }
 }
