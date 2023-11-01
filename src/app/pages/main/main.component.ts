@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 import { environment } from '../../../environments/environment';
+import { SearchComponent } from 'src/app/components/search/search.component';
 
 @Component({
   selector: 'app-main',
@@ -29,7 +30,7 @@ export class MainComponent implements OnInit {
         const bName = b.name.common;
         return aName < bName ? -1 : aName > bName ? 1 : 0;
       });
-      this.toShow = sortedData.filter((item: any) => item.name.common.includes('Col'));
+      this.toShow = sortedData.filter((item: any) => item.name.common.includes('col'));
       // this.toShow = sortedData.slice(0, 200);
     });
   }
