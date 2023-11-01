@@ -29,7 +29,7 @@ export class MainComponent implements OnInit {
         const bName = b.name.common;
         return aName < bName ? -1 : aName > bName ? 1 : 0;
       });
-      this.toShow = sortedData;
+      this.toShow = sortedData.filter((item: any) => item.name.common.includes('Col'));
       // this.toShow = sortedData.slice(0, 200);
     });
   }
