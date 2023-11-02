@@ -1,5 +1,5 @@
 <div class="search">
     <label for="search">Search</label>
-    <input type="text" id="search" name="search" [formControl]="searchText">
+    <input type="text" id="search" name="search" #searchInput [formControl]="searchText" (change)="saveChange">
     <p>Value: {{ searchText.value }}</p>
 </div>

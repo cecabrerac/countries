@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SearchService } from 'src/app/search.service';
 
 @Component({
   selector: 'app-search',
@@ -8,6 +9,15 @@ import { FormControl } from '@angular/forms';
 })
 export class SearchComponent {
 
+  @ViewChild('searchInput')
+  searchInputReference!: ElementRef;
+
   public searchText = new FormControl('');
+
+  constructor(private searchService: SearchService) {}
+
+  saveChange(){
+    this.searchService.createSearchText(this.searchInputReference.nativeElement.value)
+  }
 
 }
