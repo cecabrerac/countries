@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 import { environment } from '../../../environments/environment';
-import { SearchComponent } from 'src/app/components/search/search.component';
+import { SearchService } from 'src/app/search.service';
 
 @Component({
   selector: 'app-main',
@@ -14,12 +14,13 @@ export class MainComponent implements OnInit {
   apiUrl = environment.url;
   public dataCards: any = [];
   public toShow: any;
+  searchText: string = ''
 
-  constructor(private restService: RestService) {}
+  constructor(private restService: RestService, private searchService: SearchService) {}
 
   ngOnInit(): void {
-    console.log(this.dataCards.length);
     if (this.dataCards.length == 0) this.getAllCountries();
+    this.searchText = this.searchService.getSearchText()
   }
 
   getAllCountries() {
@@ -30,7 +31,7 @@ export class MainComponent implements OnInit {
         const bName = b.name.common;
         return aName < bName ? -1 : aName > bName ? 1 : 0;
       });
-      this.toShow = sortedData.filter((item: any) => item.name.common.includes('col'));
+      this.toShow = sortedData.filter((item: any) => item.name.common.includes(this.searchText));
       // this.toShow = sortedData.slice(0, 200);
     });
   }
