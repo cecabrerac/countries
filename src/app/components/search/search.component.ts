@@ -9,15 +9,17 @@ import { SearchService } from 'src/app/search.service';
 })
 export class SearchComponent {
 
-  @ViewChild('searchInput')
-  searchInputReference!: ElementRef;
+  // @ViewChild('searchInput')
+  // searchInputReference!: ElementRef;
 
   public searchText = new FormControl('');
 
   constructor(private searchService: SearchService) {}
 
   saveChange(){
-    this.searchService.createSearchText(this.searchInputReference.nativeElement.value)
-    if (!this.searchText) this.searchService.createSearchText(this.searchText)
+    // this.searchService.createSearchText(this.searchInputReference.nativeElement.value)
+    if (!this.searchText) this.searchService.createSearchText(this.searchText);
+    console.log(this.searchText.value)
   }
+
 }
