@@ -10,10 +10,10 @@ export class SearchService {
     return this.searchText;
   }
 
-  createSearchText(inputSearchText: string) {
-    if (inputSearchText.length !== 0) {
+  createSearchText(inputSearchText: any) {
       this.searchText = inputSearchText;
-    }
+      // console.log(this.searchText)
+    
   }
 
   constructor() {}
