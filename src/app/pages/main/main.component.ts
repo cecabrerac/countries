@@ -27,11 +27,9 @@ export class MainComponent implements OnInit, DoCheck {
 
   ngDoCheck(){
     this.searchText = this.searchService.getSearchText()
-    console.log(this.searchText)
-    if (this.filteredData) this.toShow = this.filteredData.filter((item: any) => item.name.common.includes(this.searchText));
+    // console.log(this.searchText)
+    if (this.filteredData) this.toShow = this.filteredData.filter((item: any) => item.name.common.toLowerCase().includes(this.searchText.toLowerCase()));
   }
-  
-
 
   getAllCountries() {
     this.restService.get(this.apiUrl).subscribe((respuesta: any) => {
