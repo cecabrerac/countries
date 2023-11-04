@@ -29,7 +29,6 @@ export class MainComponent implements OnInit, DoCheck {
     this.searchText = this.searchService.getSearchText()
     console.log(this.searchText)
     if (this.filteredData) this.toShow = this.filteredData.filter((item: any) => item.name.common.includes(this.searchText));
-
   }
   
 
