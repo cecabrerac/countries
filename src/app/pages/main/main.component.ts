@@ -21,6 +21,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     if (this.dataCards.length == 0) this.getAllCountries();
     this.searchText = this.searchService.getSearchText()
+    console.log(this.searchText)
   }
 
   getAllCountries() {

@@ -18,6 +18,6 @@ export class SearchComponent {
 
   saveChange(){
     this.searchService.createSearchText(this.searchInputReference.nativeElement.value)
+    if (!this.searchText) this.searchService.createSearchText(this.searchText)
   }
-
 }
