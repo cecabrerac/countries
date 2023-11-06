@@ -1,5 +1,4 @@
 <div class="search">
-    <label for="search">Search</label>
-    <input type="text" id="search" name="search" #searchInput [formControl]="searchText" (ngModelChange)="saveChange()">
-    <p>Value: {{ searchText.value }}</p>
+    <label for="search">Search country: </label>
+    <input type="text" id="search" name="search" #searchInput placeholder="Type country" [formControl]="searchText" (ngModelChange)="saveChange()">
 </div>
