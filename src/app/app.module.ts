@@ -7,11 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ContinentSelectionComponent } from './components/continent-selection/continent-selection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
+    ContinentSelectionComponent,
   ],
   imports: [
     BrowserModule,
