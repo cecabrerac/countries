@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 import { environment } from '../../../environments/environment';
 import { SearchService } from 'src/app/search.service';
+import { ContinentService } from 'src/app/services/continents';
 
 @Component({
   selector: 'app-main',
@@ -20,14 +21,14 @@ export class MainComponent implements OnInit, DoCheck {
   //continents
   it:any={}
 
-  constructor(private restService: RestService, private searchService: SearchService) {}
+  constructor(private restService: RestService, private searchService: SearchService, private continentService: ContinentService) {}
 
   ngOnInit(): void {
     if (this.dataCards.length == 0) this.getAllCountries();
     this.searchText = this.searchService.getSearchText()
     this.filteredData = this.getAllCountries();
     
-    console.log(JSON.stringify(this.unique(this.filteredData, it => it.continents[0])))
+    
 
   }
 
@@ -46,17 +47,13 @@ export class MainComponent implements OnInit, DoCheck {
         return aName < bName ? -1 : aName > bName ? 1 : 0;
       });
       this.filteredData = sortedData.filter((item: any) => item.name.common.includes(this.searchText));
+      console.log(this.filteredData)
+      console.log(this.continentService.filterContinents(this.filteredData))
       // this.toShow = sortedData.slice(0, 200);
     });
   }
 
-  unique(data:any,key:any){
-    return [
-        ...new Map(
-            data.map(x =>[key(x),x]).values()
-        )
-    ]
-    }
+  
     
     
 }
