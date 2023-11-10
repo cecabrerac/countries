@@ -17,12 +17,18 @@ export class MainComponent implements OnInit, DoCheck {
   public toShow: any = [];
   searchText: string = ''
 
+  //continents
+  it:any={}
+
   constructor(private restService: RestService, private searchService: SearchService) {}
 
   ngOnInit(): void {
     if (this.dataCards.length == 0) this.getAllCountries();
     this.searchText = this.searchService.getSearchText()
     this.filteredData = this.getAllCountries();
+    
+    console.log(JSON.stringify(this.unique(this.filteredData, it => it.continents[0])))
+
   }
 
   ngDoCheck(){
@@ -43,4 +49,14 @@ export class MainComponent implements OnInit, DoCheck {
       // this.toShow = sortedData.slice(0, 200);
     });
   }
+
+  unique(data:any,key:any){
+    return [
+        ...new Map(
+            data.map(x =>[key(x),x]).values()
+        )
+    ]
+    }
+    
+    
 }
