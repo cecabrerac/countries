@@ -12,7 +12,8 @@ export class ContinentService {
 
   createSelectedValue(inputText: any) {
       this.continent = inputText;
-      // console.log(this.searchText)
+      console.log('Service Running...')
+      console.log(this.continent)
     
   }
 
