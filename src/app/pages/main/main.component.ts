@@ -2,7 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 import { environment } from '../../../environments/environment';
 import { SearchService } from 'src/app/search.service';
-import { ContinentService } from 'src/app/services/continents';
+import { ContinentService } from 'src/app/continent.service';
 
 @Component({
   selector: 'app-main',
@@ -16,26 +16,27 @@ export class MainComponent implements OnInit, DoCheck {
   public dataCards: any = [];
   public filteredData: any = [];
   public toShow: any = [];
-  searchText: string = ''
+  searchText: string = '';
 
   //continents
-  it:any={}
+  continent: string = '';
 
   constructor(private restService: RestService, private searchService: SearchService, private continentService: ContinentService) {}
 
   ngOnInit(): void {
     if (this.dataCards.length == 0) this.getAllCountries();
     this.searchText = this.searchService.getSearchText()
+    this.continent = this.continentService.getSelectedValue()
+    console.log(this.continent)
     this.filteredData = this.getAllCountries();
-    
-    
-
   }
 
   ngDoCheck(){
     this.searchText = this.searchService.getSearchText()
-    // console.log(this.searchText)
     if (this.filteredData) this.toShow = this.filteredData.filter((item: any) => item.name.common.toLowerCase().includes(this.searchText.toLowerCase()));
+    this.continent = this.continentService.getSelectedValue()
+    console.log(this.continent)
+    if (this.filteredData) this.toShow = this.filteredData.filter((item: any) => item.continents[0].toLowerCase().includes(this.continent.toLowerCase()));
   }
 
   getAllCountries() {
@@ -47,8 +48,6 @@ export class MainComponent implements OnInit, DoCheck {
         return aName < bName ? -1 : aName > bName ? 1 : 0;
       });
       this.filteredData = sortedData.filter((item: any) => item.name.common.includes(this.searchText));
-      console.log(this.filteredData)
-      console.log(this.continentService.filterContinents(this.filteredData))
       // this.toShow = sortedData.slice(0, 200);
     });
   }
